@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
+@Component
 public class ScheduleRepository {
     private final JdbcTemplate jdbcTemplate;
 
@@ -85,7 +86,7 @@ public class ScheduleRepository {
         jdbcTemplate.update(sql, scheduleRequestDto.getName(), scheduleRequestDto.getTodo(), id);
     }
     public ScheduleResponseDto find(Long id) {
-        String sql = "select * from schedule where id = ?";
+        String sql = "SELECT * FROM schedule WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, new RowMapper<ScheduleResponseDto>() {
             @Override
             public ScheduleResponseDto mapRow(ResultSet rs, int rowNum) throws SQLException {

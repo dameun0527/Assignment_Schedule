@@ -4,7 +4,6 @@ import com.sparta.assignment_schedule.dto.ScheduleRequestDto;
 import com.sparta.assignment_schedule.dto.ScheduleResponseDto;
 import com.sparta.assignment_schedule.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +14,8 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     @Autowired
-    public ScheduleController(JdbcTemplate jdbcTemplate) {
-        this.scheduleService = new ScheduleService(jdbcTemplate);
+    public ScheduleController(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
     }
 
     // 일정 등록
