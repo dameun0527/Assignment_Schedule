@@ -2,42 +2,51 @@ package com.sparta.assignment_schedule.controller;
 
 import com.sparta.assignment_schedule.dto.ScheduleRequestDto;
 import com.sparta.assignment_schedule.dto.ScheduleResponseDto;
-import com.sparta.assignment_schedule.entity.Schedule;
+import com.sparta.assignment_schedule.service.ScheduleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 public class ScheduleController {
+    private final ScheduleService scheduleService;
 
-    private final Map<Long, Schedule> scheduleList = new HashMap<>();
-
-    @PostMapping("/schedules")
-    public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto) {
-        // RequestDto -> Entity
-        Schedule schedule = new Schedule(requestDto);
-
-        //
-        Long maxId = scheduleList.size() > 0 ? Collections.max(scheduleList.keySet()) + 1 : 1;
-        schedule.setId(maxId);
-
-        // DB 저장
-        scheduleList.put(schedule.getId(), schedule);
-
-        // Entity -> ResponseDto
-        ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(schedule);
-        return scheduleResponseDto;
+    @Autowired
+    public ScheduleController(JdbcTemplate jdbcTemplate) {
+        this.scheduleService = new ScheduleService(jdbcTemplate);
     }
 
+    // 일정 등록
+    @PostMapping("/schedules")
+    public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto) {
+        return scheduleService.createSchedule(requestDto);
+    }
+
+
+    // 전체 일정 목록 조회
     @GetMapping("/schedules")
     public List<ScheduleResponseDto> getScheduleList() {
-        // Map To List
-        List<ScheduleResponseDto> responseList = scheduleList.values().stream()
-                .map(ScheduleResponseDto::new).toList();
-        return responseList;
+        return scheduleService.getScheduleList();
+    }
+
+    // 선택 일정 조회
+    @GetMapping("/schedules/{id}")
+    public ScheduleResponseDto getSchedule(@PathVariable Long id) {
+        return scheduleService.getSchedule(id);
+    }
+
+    // 선택 일정 수정
+    @PutMapping("/schedules/{id}")
+    public Long updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto) {
+        return scheduleService.updateSchedule(id, requestDto);
+    }
+
+    // 선택 일정 삭제
+    @DeleteMapping("/schedules/{id}")
+    public Long deleteSchedule(@PathVariable Long id) {
+        return scheduleService.deleteSchedule(id);
     }
 }
