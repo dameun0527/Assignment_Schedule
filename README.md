@@ -98,6 +98,8 @@ schedule.sql에 작성함.
 부분마다 보여주면 코드가 빠지는 부분이 있을 것 같아 전체 코드 한번에 볼 수 있도록 함.
 
 **entity package**
+
+
 [Schedule.java]
 <details>
 <summary> 코드 전체 확인하기 </summary>
@@ -146,6 +148,8 @@ public class Schedule {
    - String date: 일정의 작성일 또는 수정일을 날짜 및 시간 형식으로 저장(문자열로 표현함)
 
 **controller package**
+
+
 [ScheduleController.java]
 <details>
 <summary> 코드 전체 확인하기 </summary>
@@ -231,6 +235,8 @@ public class ScheduleController {
 
 
 **dto Packages**
+
+
 [ScheduleRequestDto.java]
 <details>
 <summary> 코드 전체 확인하기 </summary>
@@ -257,6 +263,7 @@ public class ScheduleRequestDto {
 2. 주로 일정 생성 및 수정 작업에서 요청 데이터를 전달하는 역할을 수행.
 
 [ScheduleResponseDto.java]
+
 <details>
 <summary> 코드 전체 확인하기 </summary>
 
@@ -299,6 +306,8 @@ public class ScheduleResponseDto {
 
 
 **service package**
+
+
 [ScheduleService.java]
 <details>
 <summary> 코드 전체 확인하기 </summary>
@@ -421,6 +430,8 @@ public class ScheduleService {
 
 
 **repository package**
+
+
 [ScheduleRepository.java]
 <details>
 <summary> 코드 전체 확인하기 </summary>
