@@ -1,6 +1,6 @@
 package com.sparta.assignment_schedule.entity;
 
-import com.sparta.assignment_schedule.dto.ScheduleRequestDto;
+import com.sparta.assignment_schedule.domain.dto.ScheduleRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

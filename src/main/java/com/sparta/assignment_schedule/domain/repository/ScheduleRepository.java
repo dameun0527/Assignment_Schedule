@@ -1,7 +1,7 @@
-package com.sparta.assignment_schedule.repository;
+package com.sparta.assignment_schedule.domain.repository;
 
-import com.sparta.assignment_schedule.dto.ScheduleRequestDto;
-import com.sparta.assignment_schedule.dto.ScheduleResponseDto;
+import com.sparta.assignment_schedule.domain.dto.ScheduleRequestDto;
+import com.sparta.assignment_schedule.domain.dto.ScheduleResponseDto;
 import com.sparta.assignment_schedule.entity.Schedule;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

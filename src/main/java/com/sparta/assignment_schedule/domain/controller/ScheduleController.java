@@ -1,8 +1,8 @@
-package com.sparta.assignment_schedule.controller;
+package com.sparta.assignment_schedule.domain.controller;
 
-import com.sparta.assignment_schedule.dto.ScheduleRequestDto;
-import com.sparta.assignment_schedule.dto.ScheduleResponseDto;
-import com.sparta.assignment_schedule.service.ScheduleService;
+import com.sparta.assignment_schedule.domain.dto.ScheduleRequestDto;
+import com.sparta.assignment_schedule.domain.dto.ScheduleResponseDto;
+import com.sparta.assignment_schedule.domain.service.ScheduleService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
