@@ -1,9 +1,12 @@
-CREATE TABLE SCHEDULE
-(
-    id       INT         NOT NULL AUTO_INCREMENT,
-    name     VARCHAR(15) NOT NULL,
-    password VARCHAR(30) NOT NULL,
-    todo     VARCHAR(50) NULL,
-    date     DATETIME    NULL,
-    CONSTRAINT SCHEDULE_PK PRIMARY KEY (id)
+DROP TABLE If Exists schedules;
+
+# 일반 ver.
+CREATE TABLE schedules(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    title VARCHAR(255),
+    password VARCHAR(255),
+    contents VARCHAR(255),
+    created_at VARCHAR(10),
+    updated_at VARCHAR(10)
 );
